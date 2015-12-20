@@ -16,7 +16,8 @@ img {
 }
 .img-responsive {
   display: block;
-  width: 100% \9;
+  width: 100%; 
+  /* removed \9 - resizing images responsively allows for use at full width */
   max-width: 100%;
   height: auto;
 }
