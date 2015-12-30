@@ -423,21 +423,24 @@ var resizePizzas = function(size) {
 
     // Changes the slider value to a percent width
   function changePizzaSizes(size) {
-      switch(size) {
+	  var newWidth;
+	  switch(size) {
         case "1":
-          var newWidth = 25;
+          newWidth = 25;
 		  break;
         case "2":
-          var newWidth =  33.33;
+          newWidth =  33.33;
 		  break;
         case "3":
-          var newWidth =  50;
+          newWidth =  50;
 		  break;
         default:
           console.log("bug in sizeSwitcher");
       }
 
-	var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
+	//changed querySelectorAll to getElementsByClassName which is said to be
+    //more efficient. Lowered initial pizza load from 30ms to 15-18 (approx)	
+	var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
 
 	// Iterates through pizza elements on the page and changes their widths	
 	// Code was drastically simplified as per instructions in a class exercise
@@ -491,12 +494,26 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
+  //changed querySelectorAll to getElementsByClassName which is said to be
+  //more efficient, but saw little effect.
+  var items = document.getElementsByClassName('mover');
   //take the scrolling out of the loop below and cache it
-  //scrollTop is an HTML DOM property w/c refers to vert scrolling
+  //reduces 'last ten frames from mid 20s ms to less than one
+  //scrollTop - a DOM property w/c sets or returns num of px for vert scrolling
+  //Of all the changes I made, this one gave essentially all the benefit
   var scrollCache = document.body.scrollTop;
-  for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((scrollCache / 1250) + (i % 5));
+  
+  //The following was suggested on a Udacity forum. Saw no improvement from it.
+  //Puts the numbers for moving the pizzas into an array rather than recalculating
+  //them each time thru the loop. 
+  var phaseCalc = [];
+  var i;
+  
+  for (i = 0; i < 5; i++) {
+	  phaseCalc.push(Math.sin((scrollCache / 1250) + i));
+  }
+  for (i = 0; i < items.length; i++) {
+    var phase = phaseCalc[i % 5];
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
