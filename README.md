@@ -21,12 +21,13 @@ The main tasks of the project were to get the pizzas to resize in **less than 5m
 
 Pizzas now resize in as little as 0.4ms.
 
-**Sliding Pizzas**
+**Sliding Pizzas:**
 - Moved the scrolling calculation out of the for-loop in `updatePositions()` and assigned it to the variable `scrollCache`. This change seems to have provided most of the benefit.
 - Changed `querySelectorAll` to `getElementsByClassName` in `updatePositions`.
 - Put the calculations for moving the pizza into a separate loop and store them in an array (`phaseCalc`) to avoid forced synchronous layout.
+- Reduced the number of pizzas from 200 to 35 which isn't discernable on a max-width wide screen. Could make this responsive and reduce the number on smaller screens.
 
-Average time to generate the frames when scrolling is often 1 ms or less, far under the 10ms needed to avoid jank.
+Average time to generate the frames when scrolling ranges between 0.18ms and 0.45ms.
 
 ### Original repository:
 https://github.com/udacity/frontend-nanodegree-mobile-portfolio

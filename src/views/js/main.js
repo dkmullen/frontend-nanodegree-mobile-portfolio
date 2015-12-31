@@ -503,9 +503,10 @@ function updatePositions() {
   //Of all the changes I made, this one gave essentially all the benefit
   var scrollCache = document.body.scrollTop;
   
-  //The following was suggested on a Udacity forum. Saw no improvement from it.
   //Puts the numbers for moving the pizzas into an array rather than recalculating
-  //them each time thru the loop. 
+  //them each time thru the loop. Thanks for this idea to a Udacity forum mentor
+  //who posted a version of this at: 
+  //https://gist.github.com/prather-mcs/05526bb379f845ee2ba1
   var phaseCalc = [];
   var i;
   
@@ -534,7 +535,10 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  //reduced the number of sliding pizzas from 200 to 35. Can't see more on 
+  //even a wide screen. Could make this responsive and reduce the number
+  //for smaller screens.
+  for (var i = 0; i < 35; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
