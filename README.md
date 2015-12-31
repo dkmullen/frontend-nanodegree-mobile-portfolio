@@ -5,7 +5,7 @@ This project was produced for the course _Website Optimization_ offered by [Udac
 - Clone the repository: [https://github.com/dkmullen/frontend-nanodegree-mobile-portfolio](https://github.com/dkmullen/frontend-nanodegree-mobile-portfolio)
 - Find the human-readable files in the `src` dir and the minified files in `dist`.
 - If you like, you can also use the included files called `Gruntfile.js` and `package.json` to configure Grunt on your computer and use it for automating the task of updating the files in `dist` as you make changes in `src`. I found these links to be helpful in getting Grunt running:
-  - [GruntJS.com](gruntjs.com) - The Grunt page itself
+  - [GruntJS.com](http://gruntjs.com/) - The Grunt page itself
   - [This tutorial](https://scotch.io/tutorials/a-simple-guide-to-getting-started-with-grunt) - A Simple Guide to Getting Started With Grunt
 
 ## Running the Project
