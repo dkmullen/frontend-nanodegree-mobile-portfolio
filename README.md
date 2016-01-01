@@ -15,6 +15,10 @@ This project was produced for the course _Website Optimization_ offered by [Udac
 ## Major Changes to the Pizzeria Page
 The main tasks of the project were to get the pizzas to resize in **less than 5ms** when the slider is clicked, and to get the sliding pizzas to scroll at **60 frames-per-second**. The `src/views/js/main.js` file was modified to achieve this.
 
+**Pizza Loading**
+- Moved randomPizzas.length out of the for-loop and into a variable `pizzasMax`to avoid repeated recalculation. This imporved initial load time.
+- Moved `pizzasDiv` out of the for-loop to avoid repeated recalculation.
+
 **Pizza Resize:**
 - Eliminated an unneeded function (`determineDX`) and simplified the loop in the function `changePizzaSizes` to remove unneeded steps.
 - Changed `querySelectorAll` to the more efficient `getElementsByClassName` in `changePizzaSizes`.
@@ -26,6 +30,8 @@ Pizzas now resize in as little as 0.4ms.
 - Changed `querySelectorAll` to `getElementsByClassName` in `updatePositions`.
 - Put the calculations for moving the pizza into a separate loop and store them in an array (`phaseCalc`) to avoid forced synchronous layout.
 - Reduced the number of pizzas from 200 to 35 which isn't discernable on a max-width wide screen. Could make this responsive and reduce the number on smaller screens.
+- Declared the variable `phase` outside of the loop to avoid it being created repeatedly.
+- In `document.addEventListener` changed querySelector to get ElementById and moved this value out of the loop.
 
 Average time to generate the frames when scrolling ranges between 0.18ms and 0.45ms.
 
