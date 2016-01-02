@@ -29,9 +29,10 @@ Pizzas now resize in as little as 0.4ms.
 - Moved the scrolling calculation out of the for-loop in `updatePositions()` and assigned it to the variable `scrollCache`. This change seems to have provided most of the benefit.
 - Changed `querySelectorAll` to `getElementsByClassName` in `updatePositions`.
 - Put the calculations for moving the pizza into a separate loop and store them in an array (`phaseCalc`) to avoid forced synchronous layout.
-- Reduced the number of pizzas from 200 to 35 which isn't discernable on a max-width wide screen. Could make this responsive and reduce the number on smaller screens.
+- Reduced the number of pizzas from 200. Declared `screenHeight` and wrote a switch statement to dynamically calculate the number of pizza rows based on `screen.height`.
+- Moved `elem` out of loop to keep it from being created each time the loop runs.
 - Declared the variable `phase` outside of the loop to avoid it being created repeatedly.
-- In `document.addEventListener` changed querySelector to get ElementById and moved this value out of the loop.
+- In `document.addEventListener` changed `querySelector` to `getElementById` and moved this value out of the loop.
 
 Average time to generate the frames when scrolling ranges between 0.18ms and 0.45ms.
 

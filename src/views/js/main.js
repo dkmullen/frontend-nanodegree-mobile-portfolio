@@ -548,8 +548,29 @@ document.addEventListener('DOMContentLoaded', function() {
   //reduced the number of sliding pizzas from 200 to 35. Can't see more on 
   //even a wide screen. Could make this responsive and reduce the number
   //for smaller screens.
-  for (var i = 0; i < 35; i++) {
-    var elem = document.createElement('img');
+  
+  // Declared screenHeight and wrote a switch statement to dynamically calculate the number
+  // of pizza rows based on screen.height.
+  var screenHeight = screen.height;
+  function calculateRows(screenHeight) {
+	var rows;
+	switch(screenHeight) {
+		case screenHeight < 635:
+		  rows = 2;
+		  break;
+		case screenHeight < 890:
+		  rows = 3;
+		  break;
+		default:
+		  rows = 4;
+	return rows;
+	}
+  }
+  numOfPizzas = (calculateRows(screenHeight) * cols);
+  // Moved elem out of loop to keep it from being created each time the loop runs.
+  var elem;
+  for (var i = 0; i < numOfPizzas; i++) {
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
